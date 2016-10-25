@@ -1,0 +1,80 @@
+body {
+    font-family:arial;
+}
+
+h3 {
+    margin:0;
+}
+
+#parse-output {
+    width:800px;
+    font-size:.85em;
+}
+#q {
+    width:790px;
+    font-size:1em;
+    font-family:arial;
+}
+td {
+    padding:5px;
+}
+
+td#parse-query {
+    min-height:200px;
+}
+
+/* ---------------- */
+#QDisplay {
+    position:absolute;
+    border:5px orange inset;
+    right:20px;
+    top:20px;
+    min-width:200px;
+    min-height:200px;
+    background-color:white;
+}
+
+div.qdom div.qdom {
+    margin-left:30px;
+}
+
+div.qdom {
+    border:lightgray solid thin;
+    padding:5px;
+    /*margin:5px;*/
+}
+
+div.qdom.compound {
+    min-width:100px;
+    min-height: 50px;
+}
+
+.field-name {
+    background-color:lightcoral;
+    padding:2px 5px;
+}
+
+.field-value {
+    background-color:lightgreen;
+    padding:1px 3px;
+}
+
+.connector {
+    font-weight:bold;
+}
+
+#sample-queries {
+    margin: 0 0 20px 100px;
+}
+
+.sample-query {
+    font-family:"Gill Sans";
+    margin:3px;
+
+}
+
+.sample-query:hover {
+    cursor:pointer;
+    color:purple;
+    text-decoration: underline;
+}
