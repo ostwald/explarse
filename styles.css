@@ -29,7 +29,7 @@ td#parse-query {
     border:5px orange inset;
     right:20px;
     top:20px;
-    min-width:200px;
+    min-width:350px;
     min-height:200px;
     background-color:white;
 }
@@ -77,4 +77,12 @@ div.qdom.compound {
     cursor:pointer;
     color:purple;
     text-decoration: underline;
+}
+
+#note {
+    padding:5px;
+    border:thin solid red;
+    margin:20px 20%;
+    font-style:red;
+    width:40%;
 }

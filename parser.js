@@ -135,7 +135,7 @@ var PARSER = (function () {
         if (token == '*' && IN_VALUE) {
             handle_end_value('*');
         }
-        else if (token == 'AND') {
+        else if (token == 'ALL') {
             getCurrent().connector = token;
         }
         else if (token == "OR") {

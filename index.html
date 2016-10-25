@@ -34,6 +34,11 @@
 <body>
 
 <h1>Explorer Query Parser</h1>
+
+<div id="note">The NEGATION is not working. see
+<li>!(ds.MODS:* AND !ds.MODS:"lt;")</li>
+</div>
+
 <div id="sample-queries">
     <h3>Sample Queries</h3>
 
@@ -91,12 +96,13 @@ $(function () {
 
 function initSampleQueries() {
 	$([
-		'(any_field:"this that" AND (ds.MODS:* OR ark:"foo") AND affiliation:"HAP")',
-		'(ds.MODS:* AND !ds.MODS:"lt;")',
-		'(ds.MODS:* AND !(ds.MODS:"lt;" OR any_field:"foo"))',
-		'farb:foo',
+        'farb:foo',
+        '!farb:*',
 		'!farb:foo',
-		'!farb:*'
+		'(ds.MODS:* AND !ds.MODS:"lt;")',
+		'!(ds.MODS:* AND !ds.MODS:"lt;")',
+		'(any_field:"this that" AND (ds.MODS:* OR ark:"foo") AND affiliation:"HAP")',
+		'(ds.MODS:* AND !(ds.MODS:"lt;" OR any_field:"foo"))',
 	]).each(function (i, q) {
 		$('#sample-queries').append($t('div')
 				.html(q)
