@@ -65,14 +65,21 @@ var PARSER = (function () {
             else if (ch == '!') {
                 // if we are infront of a '(' this is NONE compound
                 if (i < s.length - 1) {
-                    if (s[i + 1] == '(') {
+                    if (i == 0) {
+                        if (s[i + 1] == '(') {
+                           getCurrent().connector = 'NONE'
+                           i++;
+                        }
+                        else {
+                            IN_NONE_SINGLETON = true;
+                            getCurrent().connector = 'NONE'
+                        }
+                    }
+                    else if (s[i + 1] == '(') {
                         handle_begin_compound('NONE');
                         i++;
                     }
-                    if (i == 0) {
-                        IN_NONE_SINGLETON = true;
-                        getCurrent().connector = 'NONE'
-                    }
+
                     else { // ASSUMING it's a simpleton ..
                         var comp = handle_begin_compound('NONE');
                         IN_NONE_SINGLETON = true;

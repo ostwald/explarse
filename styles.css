@@ -7,11 +7,11 @@ h3 {
 }
 
 #parse-output {
-    width:800px;
+    width:600px;
     font-size:.85em;
 }
 #q {
-    width:790px;
+    width:600px;
     font-size:1em;
     font-family:arial;
 }
@@ -21,6 +21,18 @@ td {
 
 td#parse-query {
     min-height:200px;
+}
+/* ---------------- */
+#stored-links {
+    position:absolute;
+    border:5px green inset;
+    border-radius:5px;
+    right:20px;
+    top:300px;
+    min-width:350px;
+    min-height:200px;
+    background-color:white;
+    padding:7px;
 }
 
 /* ---------------- */
@@ -85,4 +97,10 @@ div.qdom.compound {
     margin:20px 20%;
     font-style:red;
     width:40%;
+}
+
+.exparse-link:hover {
+    cursor:pointer;
+    color:purple;
+    text-decoration: underline;
 }
