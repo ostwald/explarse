@@ -43,17 +43,23 @@
     <h3>Sample Queries</h3>
 
 </div>
-<button type=button id="do-parse">Parse</button>
-<table border="1">
-	<tr>
-		<td align="right">query</td>
-		<td><input type="text" name="q" id="q"></td>
-	</tr>
-	<tr>
-		<td align="right">JSON</td>
-		<td id="parse-output"><pre id="parsed-query">Parse goes here</pre></td>
-	<tr>
-<table>
+
+<div id="table-wrapper">
+    <div id="button-row">
+        <button type=button id="do-parse">Parse</button>
+        <button type=button id="do-save">Save</button>
+    </div>
+    <table border="1">
+        <tr>
+            <td align="right">query</td>
+            <td><input type="text" name="q" id="q"></td>
+        </tr>
+        <tr>
+            <td align="right">JSON</td>
+            <td id="parse-output"><pre id="parsed-query">Parse goes here</pre></td>
+        <tr>
+    <table>
+</div>
 
 <div id="QDisplay"></div>
 <div id="stored-links">
@@ -70,6 +76,12 @@
 	var LINK_MANAGER;
 
 $(function () {
+
+    var stored_links_root = '#links';
+    LINK_MANAGER = new LinkManager(stored_links_root);
+
+    $('button').button()
+
 	$('#q').val(QUERY);
 	$('#do-parse').click (function (event) {
         // clear displays
@@ -77,9 +89,9 @@ $(function () {
         $('#QDisplay').html('')
 
         var q = $('#q').val();
-        log ("Q: " + q);
+        // log ("Q: " + q);
         var p = PARSER.parse(q);
-        log (stringify(p));
+        // log (stringify(p));
         $('#parsed-query').html(stringify(p));
 
         // Visualize
@@ -87,6 +99,8 @@ $(function () {
         var qnode = new CompositeNode(p, '#QDisplay');
         $('#QDisplay').html(qnode.dom);
 	});
+
+
 
 	$('#q').keyup (function (event) {
 		if (event.which == 13)
@@ -96,7 +110,8 @@ $(function () {
 	$('#do-parse').trigger('click');
 
 	initSampleQueries();
-    LINK_MANAGER = new LinkManager();
+
+
 });
 
 function initSampleQueries() {

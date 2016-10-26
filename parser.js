@@ -54,7 +54,7 @@ var PARSER = (function () {
 
         for (var i = 0; i < s.length; i++) {
             var ch = s[i];
-            log(ch);
+//            log(ch);
 
             if (ch == ' ') {
                 if (IN_QUOTE)
@@ -107,8 +107,8 @@ var PARSER = (function () {
             }
         }
         if (IN_VALUE && TOKEN_BUFFER) {
-            log ("LEFT over token_buffer: '" + TOKEN_BUFFER + "'")
-            log (" - IN_NONE_SINGLETON: " + IN_NONE_SINGLETON)
+//            log ("LEFT over token_buffer: '" + TOKEN_BUFFER + "'")
+//            log (" - IN_NONE_SINGLETON: " + IN_NONE_SINGLETON)
             handle_end_value(TOKEN_BUFFER)
 
             if (!IN_NONE_SINGLETON)
@@ -155,7 +155,7 @@ var PARSER = (function () {
     function handle_end_field() {
         // log ('- handle_end_field()');
         FIELD = handle_end_token();
-        log ('handle_end_field: ' + FIELD)
+//        log ('handle_end_field: ' + FIELD)
         IN_VALUE = true;
     }
 
@@ -168,7 +168,7 @@ var PARSER = (function () {
             value = handle_end_token();
         }
         var current = getCurrent();
-        log ("end_value: " + value)
+//        log ("end_value: " + value)
         current.children.push(getFieldExpr(FIELD, value));
         IN_VALUE = false;
         if (IN_NONE_SINGLETON) {

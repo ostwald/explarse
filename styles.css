@@ -6,12 +6,17 @@ h3 {
     margin:0;
 }
 
-#parse-output {
+#table-wrapper {
     width:600px;
+
+}
+
+#parse-output {
+    width:100%;
     font-size:.85em;
 }
 #q {
-    width:600px;
+    width:100%;
     font-size:1em;
     font-family:arial;
 }
@@ -22,6 +27,20 @@ td {
 td#parse-query {
     min-height:200px;
 }
+
+/* -- BUTTONS --*/
+#button-row {
+    padding:5px;
+    height:40px;
+}
+#do-parse {
+    float:left;
+}
+
+#do-save {
+    float:right;
+}
+
 /* ---------------- */
 #stored-links {
     position:absolute;
@@ -35,6 +54,12 @@ td#parse-query {
     padding:7px;
 }
 
+.exparse-link:hover {
+    cursor:pointer;
+    color:purple;
+    text-decoration: underline;
+}
+
 /* ---------------- */
 #QDisplay {
     position:absolute;
@@ -43,7 +68,22 @@ td#parse-query {
     top:20px;
     min-width:350px;
     min-height:200px;
+    padding:7px;
     background-color:white;
+}
+
+.display-name {
+    font-size:1.2em;
+    font-weight:bold;
+}
+
+.display-query-wrapper {
+    margin:2px 0 10px;
+}
+
+.display-query {
+    font-size:.9em;
+    font-family:verdana;
 }
 
 div.qdom div.qdom {
@@ -97,10 +137,4 @@ div.qdom.compound {
     margin:20px 20%;
     font-style:red;
     width:40%;
-}
-
-.exparse-link:hover {
-    cursor:pointer;
-    color:purple;
-    text-decoration: underline;
 }
