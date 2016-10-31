@@ -100,7 +100,12 @@ $(function () {
         $('#QDisplay').html(qnode.dom);
 	});
 
-
+    $('#do-save').click(function (event) {
+        var query = $('#q').val();
+        log ("query: " + query);
+        if (query)
+            LINK_MANAGER.add (query, query);
+    });
 
 	$('#q').keyup (function (event) {
 		if (event.which == 13)
@@ -116,6 +121,8 @@ $(function () {
 
 function initSampleQueries() {
 	$([
+	    'date:[2015-10-01T00:00Z TO 2016-09-30]',
+	    'date:[2015-10-01T00:00Z TO 2016-09-30] AND affiliation:"HAP"',
         'farb:foo',
         '!farb:*',
 		'!farb:foo',

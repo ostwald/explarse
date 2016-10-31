@@ -42,6 +42,7 @@ var PARSER = (function () {
         IN_VALUE = false;
         TOKEN_BUFFER = "";
         IN_QUOTE = false;
+        IN_DATE = false;
         IN_NONE_SINGLETON = false;
         STACK = []
 
@@ -57,7 +58,7 @@ var PARSER = (function () {
 //            log(ch);
 
             if (ch == ' ') {
-                if (IN_QUOTE)
+                if (IN_QUOTE || IN_DATE)
                     TOKEN_BUFFER += ch;
                 else
                     handle_end_token();
@@ -87,11 +88,17 @@ var PARSER = (function () {
                     // if we are NOT in front of '(' this is a singleton NONE compount
                 }
             }
-            else if (ch == ':') {
+            else if (ch == ':' && !IN_DATE) {
                 handle_end_field()
             }
             else if (ch == "\"") {
                 handle_quote();
+            }
+            else if (ch == "[") {
+                handle_begin_bracket();
+            }
+            else if (ch == "]") {
+                handle_end_bracket();
             }
             else if (ch == '(') {
                 handle_begin_compound();
@@ -136,7 +143,7 @@ var PARSER = (function () {
     }
 
     function handle_end_token() {
-        // log ('- handle_end_token() => ' + TOKEN_BUFFER);
+        log ('- handle_end_token() => ' + TOKEN_BUFFER);
         token = TOKEN_BUFFER.trim();
         TOKEN_BUFFER = '';
         if (token == '*' && IN_VALUE) {
@@ -160,7 +167,9 @@ var PARSER = (function () {
     }
 
     function handle_end_value(value) {
-        // log ('- handle_end_value()');
+        log ('- handle_end_value()');
+        log ("   provided value: " + value)
+        log ("   TOKEN_BUFFER: " + TOKEN_BUFFER)
         if (value) {
             TOKEN_BUFFER = '';
         }
@@ -174,6 +183,22 @@ var PARSER = (function () {
         if (IN_NONE_SINGLETON) {
             STACK.pop()
             IN_NONE_SINGLETON = false;
+        }
+    }
+
+    function handle_begin_bracket () {
+        if (!IN_QUOTE) {
+            IN_DATE = true;
+            TOKEN_BUFFER += '['
+        }
+    }
+
+    function handle_end_bracket () {
+        if (!IN_QUOTE) {
+            log ("handle_end_bracket")
+            IN_DATE = false;
+            TOKEN_BUFFER += ']'
+            handle_end_value();
         }
     }
 

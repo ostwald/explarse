@@ -33,7 +33,7 @@ var LinkManager = Class.extend({
         this.key = 'explarseLinks';
         this.$dom = $(dom_root);
 
-//        this.initStorage();
+        this.initStorage();
 //        this.showStoredData();
 
         this.read();
